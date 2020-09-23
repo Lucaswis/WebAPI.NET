@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExamenTechnologyModelStoreContainer" CdmEntityContainer="ExamenTechnologyEntities">
+    <EntitySetMapping Name="Cancion">
+      <EntityTypeMapping TypeName="ExamenTechnologyModel.Cancion">
+        <MappingFragment StoreEntitySet="Cancion">
+          <ScalarProperty Name="idCancion" ColumnName="idCancion" />
+          <ScalarProperty Name="nombreCancion" ColumnName="nombreCancion" />
+          <ScalarProperty Name="idCantante" ColumnName="idCantante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cantante">
+      <EntityTypeMapping TypeName="ExamenTechnologyModel.Cantante">
+        <MappingFragment StoreEntitySet="Cantante">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="kindOfMusic" ColumnName="kindOfMusic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

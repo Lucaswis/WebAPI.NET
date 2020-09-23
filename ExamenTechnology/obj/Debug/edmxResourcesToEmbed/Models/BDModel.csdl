@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExamenTechnologyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cancion">
+    <Key>
+      <PropertyRef Name="idCancion" />
+    </Key>
+    <Property Name="idCancion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombreCancion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idCantante" Type="Int32" />
+    <NavigationProperty Name="Cantante" Relationship="Self.FK__Cancion__idCanta__267ABA7A" FromRole="Cancion" ToRole="Cantante" />
+  </EntityType>
+  <EntityType Name="Cantante">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kindOfMusic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cancion" Relationship="Self.FK__Cancion__idCanta__267ABA7A" FromRole="Cantante" ToRole="Cancion" />
+  </EntityType>
+  <Association Name="FK__Cancion__idCanta__267ABA7A">
+    <End Role="Cantante" Type="Self.Cantante" Multiplicity="0..1" />
+    <End Role="Cancion" Type="Self.Cancion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cantante">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cancion">
+        <PropertyRef Name="idCantante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExamenTechnologyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cancion" EntityType="Self.Cancion" />
+    <EntitySet Name="Cantante" EntityType="Self.Cantante" />
+    <AssociationSet Name="FK__Cancion__idCanta__267ABA7A" Association="Self.FK__Cancion__idCanta__267ABA7A">
+      <End Role="Cantante" EntitySet="Cantante" />
+      <End Role="Cancion" EntitySet="Cancion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
